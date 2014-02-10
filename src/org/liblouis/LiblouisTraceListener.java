@@ -17,13 +17,13 @@ public class LiblouisTraceListener implements TraceListener {
 	public void close() {}
 	
 	public void enter(InstructionInfo instruction, XPathContext context) {
-		
+		int line = instruction.getLineNumber();
 		int type = instruction.getConstructType();
 		switch (type) {
 			case StandardNames.XSL_TEMPLATE:
 				Object matcher = instruction.getProperty("match");
 				if (matcher != null && ((String)matcher).startsWith("text()"))
-					System.err.println("<template match=\"" + matcher + "\"/>");
+					System.err.println(String.valueOf(line) + ": " + "<template match=\"" + matcher + "\"/>");
 				break;
 			case Location.FUNCTION_CALL:
 				String name = instruction.getObjectName().getDisplayName();
@@ -33,7 +33,7 @@ public class LiblouisTraceListener implements TraceListener {
 						Iterator<Expression> arguments = call.iterateSubExpressions();
 						String table = arguments.next().evaluateAsString(context).toString();
 						String text = arguments.next().evaluateAsString(context).toString();
-						System.err.println("louis:translate(\n\t'" + table + "',\n\t'" + text + "')"); }
+						System.err.println(String.valueOf(line) + ": " + "louis:translate(\n\t'" + table + "',\n\t'" + text + "')"); }
 					catch (Exception e) {}}
 				break;
 			default:
