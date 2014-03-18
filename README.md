@@ -7,7 +7,7 @@ It does this by providing a specialized `javax.xml.transform.sax.SAXTransformerF
 that can be used to configure applications that respect the
 System property `"javax.xml.transform.TransformerFactory"`.
 
-It uses [saxon][] with a [java extension](https://github.com/sbsdev/LiblouisSaxonExtension)
+It uses [saxon][] with a [java extension][]
 that offers translating text into braille using [liblouis].
 
 Usage `org.liblouis.LouisExtensionTransformerFactoryImpl`
@@ -66,7 +66,7 @@ Licensed under GNU Lesser General Public License as published by the Free Softwa
 either [version 3](http://www.gnu.org/licenses/gpl-3.0.html) of the License, or (at your option) any later version.
 
 
-[java extension]
+[java extension]: https://github.com/sbsdev/LiblouisSaxonExtension
 [saxon]: http://saxon.sourceforge.net/
 [java]: http://java.sun.com
 [liblouis]: http://code.google.com/p/liblouis/
