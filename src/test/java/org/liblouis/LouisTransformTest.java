@@ -8,7 +8,7 @@ import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
 
 /**
- * Copyright (C) 2010 Swiss Library for the Blind, Visually Impaired and Print Disabled
+ * Copyright (C) 2010-2026 Swiss Library for the Blind, Visually Impaired and Print Disabled
  *
  * This file is part of LiblouisSaxonExtension.
  *

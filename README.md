@@ -55,7 +55,7 @@ Authors
 License
 -------
 
-Copyright 2011 SBS.
+Copyright 2011-2026 SBS.
 
 Licensed under GNU Lesser General Public License as published by the Free Software Foundation,
 either [version 3](https://www.gnu.org/licenses/lgpl-3.0.html) of the License, or (at your option) any later version.
