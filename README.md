@@ -36,6 +36,15 @@ Prerequisites
 * [Maven][]
 * [liblouis][] (e.g. `apt install liblouis-dev liblouis-data`)
 
+Related projects
+----------------
+
+The [DAISY Pipeline 2](https://github.com/daisy/pipeline) contains a similar
+`louis:translate` Saxon extension, but it requires the full Pipeline OSGi
+container and has not been updated since 2018. This project provides the same
+functionality as a plain-JVM standalone JAR. See [prior-art.org](prior-art.org)
+for details.
+
 Authors
 -------
 
