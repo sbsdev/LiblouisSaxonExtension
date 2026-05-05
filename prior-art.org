@@ -1,0 +1,60 @@
+#+TITLE: Prior Art: Saxon + liblouis XSLT Integration
+#+DATE: 2026-05-05
+
+* Summary
+
+No actively maintained, standalone Java/Maven package exists that provides
+the same functionality as this project. The project occupies an otherwise
+empty niche: a plain-JVM, modern Saxon 12, directly callable =louis:translate=
+extension with no container dependency.
+
+* DAISY Pipeline 2 — =liblouis-saxon=
+
+The only known precedent is a module inside the DAISY Pipeline 2 braille stack.
+
+- *Repository:* [[https://github.com/daisy/pipeline-mod-braille/tree/develop/liblouis-utils/liblouis-saxon][daisy/pipeline-mod-braille]], under =liblouis-utils/liblouis-saxon/=
+- *Maven coordinates:* =org.daisy.pipeline.modules.braille:liblouis-saxon:2.0.5=
+- *Last Maven Central release:* 2.0.5, published ~2018 (approximately 7 years ago)
+- *Last code change:* November 2018; not carried forward to the current [[https://github.com/daisy/pipeline-modules][daisy/pipeline-modules]] repo
+
+** What it provides
+
+Two Saxon =ExtensionFunctionDefinition= subclasses in the
+=http://liblouis.org/liblouis= namespace (same as this project):
+
+- =louis:translate(query, text*, [style*])= — translates text to braille;
+  the first argument is a /query string/ (e.g. =(translator:liblouis)(table:en-us-g2.ctb)=)
+  resolved through an OSGi service registry, not a direct table path
+- =louis:hyphenate(query, text)= — hyphenates text via liblouis
+
+** Critical limitation: OSGi-only
+
+Both functions are =@Component= OSGi services wired through the DAISY
+Pipeline's Apache Felix runtime. They require the full Pipeline container
+and ~6 inter-dependent modules. They cannot be used as a standalone JAR
+on a plain JVM.
+
+* Other candidates
+
+- *=liblouis-java=* (=org.liblouis:liblouis-java=, actively maintained):
+  the JNA binding to the native library used by this project. Provides
+  =Translator.translate()= in Java but has no Saxon integration.
+
+- *liblouis project itself:* ships a =louis:translate= extension for
+  Python/libxslt (=python/examples/liblouisxslt.py=) but nothing for
+  Java or Saxon.
+
+- *Maven Central generally:* no other artifact combines Saxon
+  =ExtensionFunctionDefinition= with liblouis.
+
+* Comparison
+
+| Dimension               | DAISY =liblouis-saxon:2.0.5=          | This project                     |
+|-------------------------+---------------------------------------+----------------------------------|
+| Runtime requirement     | OSGi container (DAISY Pipeline Felix) | Plain JVM, no container          |
+| Function signature      | =louis:translate(query, text*, style*)= | =louis:translate(table, text)=   |
+| Saxon version           | Pre-9.9 API                           | Saxon-HE 12.5                    |
+| Actively maintained     | No (frozen since 2018)                | Yes                              |
+| Standalone usable       | No                                    | Yes                              |
+| Hyphenate function      | Yes (=louis:hyphenate=)               | No                               |
+| Maven Central           | Yes, but stale                        | Not yet published                |
