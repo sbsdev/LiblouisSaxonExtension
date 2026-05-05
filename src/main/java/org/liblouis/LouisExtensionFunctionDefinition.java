@@ -1,20 +1,4 @@
-package org.liblouis;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import net.sf.saxon.expr.XPathContext;
-import net.sf.saxon.lib.ExtensionFunctionCall;
-import net.sf.saxon.lib.ExtensionFunctionDefinition;
-import net.sf.saxon.om.Item;
-import net.sf.saxon.om.Sequence;
-import net.sf.saxon.om.StructuredQName;
-import net.sf.saxon.trans.XPathException;
-import net.sf.saxon.value.EmptySequence;
-import net.sf.saxon.value.SequenceType;
-import net.sf.saxon.value.StringValue;
-
-/**
+/*
  * Copyright (C) 2010-2026 Swiss Library for the Blind, Visually Impaired and Print Disabled
  *
  * This file is part of LiblouisSaxonExtension.
@@ -33,6 +17,22 @@ import net.sf.saxon.value.StringValue;
  * License along with this program. If not, see
  * <http://www.gnu.org/licenses/>.
  */
+
+package org.liblouis;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import net.sf.saxon.expr.XPathContext;
+import net.sf.saxon.lib.ExtensionFunctionCall;
+import net.sf.saxon.lib.ExtensionFunctionDefinition;
+import net.sf.saxon.om.Item;
+import net.sf.saxon.om.Sequence;
+import net.sf.saxon.om.StructuredQName;
+import net.sf.saxon.trans.XPathException;
+import net.sf.saxon.value.EmptySequence;
+import net.sf.saxon.value.SequenceType;
+import net.sf.saxon.value.StringValue;
 
 public class LouisExtensionFunctionDefinition extends ExtensionFunctionDefinition {
 

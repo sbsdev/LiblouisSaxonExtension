@@ -1,13 +1,4 @@
-package org.liblouis;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
-import org.junit.jupiter.api.Test;
-
-/**
+/*
  * Copyright (C) 2010-2026 Swiss Library for the Blind, Visually Impaired and Print Disabled
  *
  * This file is part of LiblouisSaxonExtension.
@@ -26,6 +17,15 @@ import org.junit.jupiter.api.Test;
  * License along with this program. If not, see
  * <http://www.gnu.org/licenses/>.
  */
+
+package org.liblouis;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import org.junit.jupiter.api.Test;
 
 class SysOutSaver {
     @FunctionalInterface

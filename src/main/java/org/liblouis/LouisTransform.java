@@ -1,8 +1,4 @@
-package org.liblouis;
-
-import net.sf.saxon.Transform;
-
-/**
+/*
  * Copyright (C) 2010-2026 Swiss Library for the Blind, Visually Impaired and Print Disabled
  *
  * This file is part of LiblouisSaxonExtension.
@@ -21,6 +17,10 @@ import net.sf.saxon.Transform;
  * License along with this program. If not, see
  * <http://www.gnu.org/licenses/>.
  */
+
+package org.liblouis;
+
+import net.sf.saxon.Transform;
 
 public class LouisTransform extends Transform {
 
