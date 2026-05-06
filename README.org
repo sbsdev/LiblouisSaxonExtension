@@ -1,0 +1,51 @@
+#+TITLE: Liblouis Saxon Extension
+
+This project provides a Saxon extension that allows translating text nodes to braille using liblouis
+from within XSLT.
+
+It does this by providing a specialized =javax.xml.transform.sax.SAXTransformerFactory= that can be
+used to configure applications that respect the system property
+=javax.xml.transform.sax.SAXTransformerFactory=.
+
+It uses [[https://www.saxonica.com/][Saxon]] with a [[https://github.com/sbsdev/LiblouisSaxonExtension][Java extension]] that offers translating text into braille using [[https://liblouis.io/][liblouis]].
+
+* Usage =org.liblouis.LouisExtensionTransformerFactoryImpl=
+
+#+BEGIN_EXAMPLE
+java -Djavax.xml.transform.sax.SAXTransformerFactory=org.liblouis.transformerfactory.LouisExtensionTransformerFactoryImpl YourAppThatUsesJaxp
+#+END_EXAMPLE
+
+* Usage =org.liblouis.LouisTransform=
+
+#+BEGIN_EXAMPLE
+java org.liblouis.LouisTransform -s:yourSource.xml -xsl:yourXSLT.xsl
+#+END_EXAMPLE
+
+* Debugging your XSLT
+
+To print debug info, use Saxon's TraceListener mechanism:
+
+#+BEGIN_EXAMPLE
+java org.liblouis.LouisTransform -s:yourSource.xml -xsl:yourXSLT.xsl \
+                                 -T:org.liblouis.LiblouisTraceListener \
+                                 2> file/to/redirect/stderr/to
+#+END_EXAMPLE
+
+* Prerequisites
+
+- [[https://www.java.com][Java]] 11 or later
+- [[https://maven.apache.org/][Maven]]
+- [[https://liblouis.io/][liblouis]] (e.g. =apt install liblouis-dev liblouis-data=)
+
+* Related projects
+
+The [[https://github.com/daisy/pipeline][DAISY Pipeline 2]] contains a similar =louis:translate= Saxon extension, but it requires the full
+Pipeline OSGi container and has not been updated since 2018. This project provides the same
+functionality as a plain-JVM standalone JAR. See [[file:prior-art.org][prior-art.org]] for details.
+
+* License
+
+Copyright 2011-2026 Swiss Library for the Blind, Visually Impaired and Print Disabled.
+
+Licensed under GNU Lesser General Public License as published by the Free Software Foundation,
+either [[https://www.gnu.org/licenses/lgpl-3.0.html][version 3]] of the License, or (at your option) any later version.
