@@ -43,6 +43,14 @@
             <version>5.11.0</version>
             <scope>test</scope>
         </dependency>
+        <!-- liblouis-java pulls in slf4j-api but provides no binding; without this,
+             SLF4J prints a "Failed to load StaticLoggerBinder" warning at test time -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.36</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -69,6 +77,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.3.1</version>
+                <configuration>
+                    <!-- JNA (used by liblouis-java) loads the native liblouis library via
+                         System.load(); Java 23+ requires explicit opt-in for native access -->
+                    <argLine>--enable-native-access=ALL-UNNAMED</argLine>
+                </configuration>
             </plugin>
         </plugins>
     </build>
