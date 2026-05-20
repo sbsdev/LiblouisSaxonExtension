@@ -1,3 +1,7 @@
+> **Deprecated.** This project is archived. The functionality has been replaced by calling
+> [liblouis-java](https://github.com/liblouis/liblouis-java) directly from XSLT via a custom
+> Saxon extension function.
+
 Liblouis Saxon Extension
 ========================
 
